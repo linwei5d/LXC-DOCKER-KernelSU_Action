@@ -49,7 +49,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
-                      
+        git submodule init
+        git submodule update
     - name: 开启lxc和docker配置
       if: env.ENABLE_LXC_DOCKER == 'true'
       run: |
